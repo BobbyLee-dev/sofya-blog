@@ -9,6 +9,7 @@ export default class Page extends Component {
     return (
       <Layout>
         <SEO title="Page" />
+        test
         <h1>{data.wordpressPage.title}</h1>
         <div
           dangerouslySetInnerHTML={{

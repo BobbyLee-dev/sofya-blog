@@ -12,6 +12,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
                 id
                 slug
                 title
+                status
                 content
               }
             }
@@ -21,6 +22,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
               node {
                 id
                 slug
+                status
                 title
                 content
               }
@@ -46,7 +48,7 @@ exports.createPages = ({ graphql, boundActionCreators }) => {
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
-          path: `posts/${node.slug}`,
+          path: `post/${node.slug}`,
           component: path.resolve("./src/pages/post.js"),
           context: {
             slug: node.slug,
