@@ -1,7 +1,7 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 
-const Posts = () => (
+const AllPosts = () => (
   <StaticQuery
     query={graphql`
       query postListQuery {
@@ -13,8 +13,15 @@ const Posts = () => (
               title
               excerpt
               link
+              title
               featured_media {
-                source_url
+                localFile {
+                  childImageSharp {
+                    fluid(maxWidth: 1000) {
+                      ...GatsbyImageSharpFluid_tracedSVG
+                    }
+                  }
+                }
               }
             }
           }
@@ -41,4 +48,4 @@ const Posts = () => (
   />
 )
 
-export default Posts
+export default AllPosts
