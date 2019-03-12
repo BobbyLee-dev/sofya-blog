@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -22,8 +23,8 @@ export default class Page extends Component {
 }
 
 export const query = graphql`
-  query PageQuery($slug: String!) {
-    wordpressPage(slug: { eq: $slug }) {
+  query PageQuery($id: String!) {
+    wordpressPage(id: { eq: $id }) {
       title
       slug
       content

@@ -20,6 +20,7 @@ exports.createPages = ({ graphql, actions }) => {
           allWordpressPost {
             edges {
               node {
+                id
                 slug
                 title
                 content
@@ -35,21 +36,23 @@ exports.createPages = ({ graphql, actions }) => {
       }
 
       result.data.allWordpressPage.edges.forEach(({ node }) => {
-        createPage({
-          path: node.slug,
-          component: path.resolve("./src/pages/page.js"),
-          context: {
-            slug: node.slug,
-          },
-        })
+        if (node.status === "publish") {
+          createPage({
+            path: node.slug,
+            component: path.resolve("./src/components/pagesLayout.js"),
+            context: {
+              id: node.id,
+            },
+          })
+        }
       })
 
       result.data.allWordpressPost.edges.forEach(({ node }) => {
         createPage({
           path: `post/${node.slug}`,
-          component: path.resolve("./src/pages/post.js"),
+          component: path.resolve("./src/components/postLayout.js"),
           context: {
-            slug: node.slug,
+            id: node.id,
           },
         })
       })

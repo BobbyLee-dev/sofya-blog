@@ -28,8 +28,8 @@ export default class Post extends Component {
 }
 
 export const query = graphql`
-  query PostQuery($slug: String!) {
-    wordpressPost(slug: { eq: $slug }) {
+  query PostQuery($id: String!) {
+    wordpressPost(id: { eq: $id }) {
       title
       slug
       content
