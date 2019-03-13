@@ -1,8 +1,8 @@
 import React, { Component } from "react"
 import { graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "./layout"
+import SEO from "./seo"
 
 export default class Page extends Component {
   render() {
