@@ -5,7 +5,7 @@ import React from "react"
 const Header = ({ siteTitle, menu }) => (
   <header
     style={{
-      background: `rebeccapurple`,
+      // background: `rebeccapurple`,
       marginBottom: `1.45rem`,
     }}
   >
@@ -20,7 +20,7 @@ const Header = ({ siteTitle, menu }) => (
         <Link
           to="/"
           style={{
-            color: `white`,
+            color: `black`,
             textDecoration: `none`,
           }}
         >
@@ -29,7 +29,13 @@ const Header = ({ siteTitle, menu }) => (
       </h1>
       <nav>
         {menu.map(item => (
-          <Link to={`/${item.object_slug}`} key={item.wordpress_id}>
+          <Link
+            to={`/${item.object_slug}`}
+            key={item.wordpress_id}
+            style={{
+              marginRight: `10px`,
+            }}
+          >
             {item.title}
           </Link>
         ))}
