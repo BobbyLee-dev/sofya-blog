@@ -6,7 +6,7 @@ import styled from "styled-components"
 const PostsWrap = styled.section`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: space-between;
   article {
     width: 30%;
     min-width: 300px;
