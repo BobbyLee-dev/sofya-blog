@@ -1,6 +1,26 @@
 import React from "react"
 import { StaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
+import styled from "styled-components"
+
+const PostsWrap = styled.section`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  article {
+    width: 30%;
+    min-width: 300px;
+    &:first-of-type {
+      width: 100%;
+      .gatsby-image-wrapper {
+        height: 500px;
+      }
+    }
+    .gatsby-image-wrapper {
+      height: 250px;
+    }
+  }
+`
 
 const POST_QUERY = graphql`
   query postListQuery {
@@ -32,7 +52,7 @@ const AllPosts = () => (
   <StaticQuery
     query={POST_QUERY}
     render={data => (
-      <section>
+      <PostsWrap>
         {data.allWordpressPost.edges.map(item => (
           <article key={item.node.id}>
             <Link to={`post/${item.node.slug}`}>
@@ -52,7 +72,7 @@ const AllPosts = () => (
             </Link>
           </article>
         ))}
-      </section>
+      </PostsWrap>
     )}
   />
 )
