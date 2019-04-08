@@ -66,6 +66,9 @@ const NavItems = styled.ul`
 
 const NavItem = styled.li`
   margin: 0;
+  @media (min-width: 768px) {
+    margin-right: 10px;
+  }
   a {
     text-decoration: none;
     color: #000;
@@ -107,6 +110,12 @@ class Header extends React.Component {
     })
   }
 
+  navItemClicked() {
+    this.setState({
+      open: window.innerWidth >= 768 ? [1] : [0],
+    })
+  }
+
   render() {
     const isDesktop = this.state.isDesktop
     return (
@@ -130,19 +139,18 @@ class Header extends React.Component {
           ) : null}
           {this.state.open[0] ? (
             <NavItems>
-              {this.props.menu.map(item => (
-                <NavItem>
-                  <Link
-                    to={`/${item.object_slug}`}
-                    key={item.wordpress_id}
-                    style={{
-                      marginRight: `10px`,
-                    }}
-                  >
-                    {item.title}
-                  </Link>
-                </NavItem>
-              ))}
+              <NavItem onClick={this.navItemClicked.bind(this)}>
+                <Link to="/">Home</Link>
+              </NavItem>
+              {this.props.menu.map(item =>
+                item.object_slug !== "home" ? (
+                  <NavItem onClick={this.navItemClicked.bind(this)}>
+                    <Link to={`/${item.object_slug}`} key={item.wordpress_id}>
+                      {item.title}
+                    </Link>
+                  </NavItem>
+                ) : null
+              )}
             </NavItems>
           ) : null}
         </nav>

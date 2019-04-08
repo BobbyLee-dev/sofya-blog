@@ -13,7 +13,7 @@ const PostsWrap = styled.section`
     &:first-of-type {
       width: 100%;
       .gatsby-image-wrapper {
-        height: 500px;
+        height: auto;
       }
     }
     .gatsby-image-wrapper {
